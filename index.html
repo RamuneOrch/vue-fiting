@@ -8,8 +8,11 @@
 </head>
 <body>
     <div id="app">
-        {{ person.name }}  {{ person.age }}
-        {{ nextYear() }}
+        {{ person.name }} <br>
+        {{ person.age }}    <br>
+        {{ nextYear('Hello') }}
+        <br>
+        <input v-bind:type="text" :placeholder="InputData">
     </div>
 
     <script>
@@ -19,11 +22,16 @@
                 person: {
                     name: 'Kozi Coder',
                     age : 34
-                }
+                },
+                InputData: 'hello',
+                text: 'password'
             },
             methods: {
-                nextYear: function(){
-                    return `${this.person.name}는 내년에 ${this.person.age + 1 }이 됩니다`
+                nextYear(greeting){
+                    return `${greeting} ! ${this.person.name}는 내년에 ${this.person.age + 1 }이 됩니다`
+                },
+                otherMethod: () => {
+                    return this.nextYear()
                 }
             }
         })
