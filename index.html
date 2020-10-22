@@ -8,30 +8,23 @@
 </head>
 <body>
     <div id="app">
-        {{ person.name }} <br>
-        {{ person.age }}    <br>
-        {{ nextYear('Hello') }}
-        <br>
-        <input v-bind:type="text" :placeholder="InputData">
+        {{ year }} <br>
+        <button v-on:click="plus()">plus</button>
+        <button v-on:click="minus()">minus</button>
     </div>
 
     <script>
         new Vue({
             el: '#app',
             data:{
-                person: {
-                    name: 'Kozi Coder',
-                    age : 34
-                },
-                InputData: 'hello',
-                text: 'password'
+                year: 2018
             },
             methods: {
-                nextYear(greeting){
-                    return `${greeting} ! ${this.person.name}는 내년에 ${this.person.age + 1 }이 됩니다`
+                plus(){
+                    this.year++
                 },
-                otherMethod: () => {
-                    return this.nextYear()
+                minus(){
+                    this.year--
                 }
             }
         })
